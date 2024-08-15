@@ -1,0 +1,11 @@
+.error-message {
+    border: 1px solid $error;
+    border-radius: 7px;
+    background-color: rgba($error, 0.1);
+    color: $error;
+    padding: 10px;
+
+    &:empty {
+        display: none;
+    }
+}

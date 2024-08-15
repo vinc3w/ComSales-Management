@@ -1,0 +1,25 @@
+#loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .loading-circle {
+        height: 30px;
+
+        svg {
+            width: 30px;
+        }
+
+        circle {
+            stroke: $neutral-dark;
+            stroke-width: 5px;
+        }
+    }
+
+    .text {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+}

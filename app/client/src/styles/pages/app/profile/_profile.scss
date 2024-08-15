@@ -1,0 +1,102 @@
+#profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .loading-circle {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+
+        circle {
+            stroke: $neutral-dark;
+        }
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+
+    .profile, .name-card {
+        margin: 10px 0 20px 0;
+    }
+
+    .name {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    
+    .name-card {
+        display: flex;
+        flex-direction: column;
+        background-color: $neutral-light;
+        border-radius: 7px;
+
+        .top {
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            .profile-image {
+
+                img {
+                    height: 100px;
+                }
+            }
+
+            .right {
+                text-align: right;
+            }
+        }
+
+        .bottom {
+            border-left: 30px solid #ae98b6;
+            padding: 10px 10px 10px 20px;
+            margin-bottom: 30px;
+
+            td:first-of-type {
+                font-weight: 700;
+            }
+
+            td:nth-of-type(2) {
+                padding: 2px 10px;
+            }
+        }
+    }
+
+    .profile {
+        padding: 30px;
+        border-radius: 7px;
+
+        &.male {
+            color: $neutral-light;
+            background-color: $primary;
+        }
+
+        &.female {
+            background-color: $secondary;
+        }
+        
+        .profile-top {
+            padding-bottom: 10px;
+            border-bottom: 2px solid $neutral-dark;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .bottom {
+            
+            & > * {
+                display: flex;
+                gap: 10px;
+                margin: 3px 0;
+            }
+        }
+    }
+}

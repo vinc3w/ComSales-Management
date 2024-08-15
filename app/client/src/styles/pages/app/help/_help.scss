@@ -1,0 +1,44 @@
+#Help {
+    background-color: $neutral-light;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .sub-title {
+        font-weight: 700;
+        margin-top: 20px;
+    }
+
+    .socials {
+        min-width: 300px;
+        
+        a {
+            color: $neutral-dark;
+        }
+        
+        td:first-of-type {
+            width: 25px;
+            font-size: 20px;
+        }
+    }
+
+    .right {
+        display: flex;
+        height: 300px;
+        gap: 20px;
+        flex-wrap: wrap;
+    
+        img {
+            height: 300px;
+        }
+    }
+}

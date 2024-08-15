@@ -1,0 +1,30 @@
+.employee {
+    background-color: $neutral-light;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba($neutral-dark, 0.1), 0 6px 20px 0 rgba($neutral-dark, 0.15);
+
+    section {
+        display: flex;
+        flex-grow: 1;
+
+        svg {
+            margin-right: 20px;
+            font-size: 35px;
+        }
+
+        .label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .count {
+        }
+    }
+}

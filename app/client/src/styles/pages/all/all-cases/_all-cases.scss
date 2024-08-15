@@ -1,0 +1,42 @@
+#AllCases {
+
+    .pagination {
+        margin-top: 20px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .table-container {
+        overflow-x: auto;
+
+        .empty {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            img {
+                display: block;
+            }
+
+            .title {
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    @import './filter';
+    @import './table';
+}

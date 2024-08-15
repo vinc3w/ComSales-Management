@@ -1,0 +1,162 @@
+.summary {
+
+    .header {
+        display: flex;
+        align-items: center;
+        color: $primary;
+        background-color: rgba($neutral-light-accent-2, 0.5);
+        padding: 10px 20px;
+        margin: 20px 0;
+
+        svg {
+            margin-right: 20px;
+            font-size: 25px;
+        }
+    }
+
+    .short-info, .people {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        & > * {
+            flex-grow: 1;
+            padding: 0 20px 20px 20px;
+            border-radius: 20px;
+
+            .title {
+                padding: 10px 30px;
+                border-radius: 100px;
+                margin: 20px 0;
+                color: $neutral-light;
+                display: inline-block;
+            }
+
+            table:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+
+            td:first-of-type {
+                padding-right: 20px;
+            }
+
+            .label {
+                font-size: 13px;
+            }
+
+            .value {
+                font-family: 'PoppinsBold';
+
+                &.status {
+                    background-color: $error;
+                    padding: 5px 10px;
+                    margin-left: -10px;
+                    border-radius: 30px;
+                    width: fit-content;
+                    color: $neutral-light;
+                }
+
+                &.pending {
+                    background-color: $error;
+                }
+
+                &.approved {
+                    background-color: $warning;
+                }
+
+                &.completed {
+                    background-color: $success;
+                }
+            }
+        }
+
+        .seller {
+            background-color: rgba($primary, 0.3);
+
+            .title {
+                background-color: $primary;
+            }
+        }
+
+        .buyer {
+            background-color: rgba($secondary, 0.5);
+
+            .title {
+                background-color: $secondary;
+            }
+        }
+    }
+
+    .payment {
+        margin-top: 20px;
+
+        .text {
+            border-bottom: 1px solid $neutral-light-accent-2;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .calculation {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+        border-bottom: 1px solid $neutral-light-accent-2;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+
+        .blue {
+            color: $primary;
+        }
+
+        .red {
+            color: $error;
+        }
+
+        .table-container {
+            flex-grow: 1;
+
+            table {
+                text-align: right;
+    
+                tr {
+                    height: 15px;
+                }
+            }
+        }
+
+        td:first-of-type {
+            // color: $neutral-light-accent-2;
+            font-weight: 700;
+            padding-right: 40px;
+        }
+
+        td.percentage {
+            padding: 0 40px 0 20px;
+            opacity: 0.7;
+        }
+
+        .subtotal {
+            padding: 0 !important;
+            
+            div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px dashed $neutral-light-accent-2;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .total {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        font-size: 20px;
+    }
+}

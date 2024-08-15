@@ -1,0 +1,8 @@
+{
+    "LIMIT_COUNT": 20,
+    "MAX_LOGIN_ATTEMPT": 5,
+    "LOCK_FOR": {
+        "VALUE": 10,
+        "TYPE": "minutes"
+    }
+}

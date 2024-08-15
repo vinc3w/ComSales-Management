@@ -1,0 +1,130 @@
+#Employee {
+    background-color: $neutral-light;
+    padding: 20px;
+
+    .success-message, .error-message {
+        margin-bottom: 20px;
+    }
+
+    .loading {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+        
+        .loading-circle {
+            margin: 0 auto;
+
+            svg circle {
+                stroke: $neutral-dark;
+                
+            }
+        }
+    }
+
+    form {
+
+        .title {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        table.profile-image {
+
+            img {
+                height: 80px;
+                width: 80px;
+                display: block;
+            }
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+
+            &:nth-last-of-type(odd) {
+                table-layout: fixed;
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 2px solid $neutral-dark;
+        }
+
+        tr, td {
+            border: 1px solid $neutral-dark;
+        }
+
+        td {
+            padding: 5px 10px;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        td.heading {
+            font-weight: 700;
+        }
+
+        td.radio > div {
+            display: flex;
+            justify-content: space-evenly;
+
+            & > div {
+                display: flex;
+                
+                > div {
+                    text-wrap: nowrap;
+                }
+
+                input {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        td.cell-button {
+            padding: 0;
+            text-align: center;
+            
+            button {
+                padding: 10px 5px;
+                height: 100%;
+                width: 100%;
+                background-color: $neutral-light-accent-2;
+                cursor: pointer;
+                transition: background-color 100ms linear;
+                color: $neutral-dark;
+
+                &:hover {
+                    background-color: $neutral-light-accent-1;
+                }
+
+                &:active {
+                    background-color: $neutral-light;
+                }
+            }
+        }
+
+        .position {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            
+            .label {
+
+            }
+
+            .value {
+                opacity: 0.7;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+    }
+}

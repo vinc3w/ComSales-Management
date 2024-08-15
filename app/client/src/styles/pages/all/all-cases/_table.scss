@@ -1,0 +1,58 @@
+.table-container {
+
+    .error-message {
+        border: 1px solid $error;
+        border-radius: 7px;
+        background-color: rgba($error, 0.1);
+        color: $error;
+        padding: 10px;
+        margin-bottom: 20px;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    table.case-list {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: $neutral-light;
+        font-size: 13px;
+
+        td {
+            border: 2px solid $neutral-dark;
+            padding: 5px 10px;
+
+            a {
+                color: $neutral-dark;
+            }
+        }
+        
+        thead td {
+            background-color: $neutral-light-accent-1;
+            
+            button {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+    }
+
+    .loading {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+        
+        .loading-circle {
+            margin: 0 auto;
+
+            svg circle {
+                stroke: $neutral-dark;
+                
+            }
+        }
+    }
+}

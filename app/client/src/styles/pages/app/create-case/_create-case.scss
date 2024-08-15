@@ -1,0 +1,69 @@
+#CreateCase {
+    background-color: $neutral-light;
+    padding: 20px;
+
+    @import './forms';
+    @import './case-no-input';
+    @import './case-name-input';
+    @import './summary';
+
+    .success-message, .error-message {
+        margin-bottom: 20px;
+    }
+
+    .loading-circle {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0;
+
+        svg circle {
+            stroke: $neutral-dark;
+        }
+    }
+
+    .create-case-top-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+        gap: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $neutral-light-accent-2;
+    }
+
+    .create-case-top {
+        display :flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid $neutral-light-accent-2;
+    }
+
+    .empty {
+        margin-top: 20px;
+    }
+
+    .admin-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    button[type=submit], button.delete, button.delete-case {
+        margin-top: 20px;
+    }
+    
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    form.delete-case {
+        margin-top: 20px;
+        border-top: 1px solid $neutral-light-accent-2;
+    }
+}

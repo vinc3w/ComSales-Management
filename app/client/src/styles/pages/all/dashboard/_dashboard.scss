@@ -1,0 +1,11 @@
+#dashboard {
+
+    .error-message {
+        margin-bottom: 20px;
+    }
+    
+    @import './employee';
+    @import './commission';
+    @import './case-summary';
+    @import './employee-birthday';
+}

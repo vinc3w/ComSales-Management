@@ -1,0 +1,57 @@
+.commission {
+    background-color: $neutral-light;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 rgba($neutral-dark, 0.1), 0 6px 20px 0 rgba($neutral-dark, 0.15);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+    flex-wrap: wrap;
+
+    @media (width <= 1300px) {
+        height: fit-content;
+
+        section:last-of-type {
+            margin-top: 30px;
+        }
+
+        .chart > div {
+            margin-top: 20px;
+            width: 500px;
+        }
+    }
+
+    section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .chart {
+            margin : auto 0;
+
+            & > div {
+                @media (width <= 650px) {
+                    width: 300px;
+                }
+    
+                @media (width <= 400px) {
+                    width: 250px;
+                }
+            }
+        }
+    }
+
+    .loading-circle {
+
+        circle {
+            stroke: $neutral-dark;
+        }
+    }
+}

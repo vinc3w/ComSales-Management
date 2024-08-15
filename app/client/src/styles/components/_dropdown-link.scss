@@ -1,0 +1,54 @@
+.dropdown-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .dropdown-sub {
+
+        .trigger {
+            background-color: $neutral-light;
+            border: 2px solid $neutral-dark;
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 170px;
+            cursor: pointer;
+        }
+
+        .options {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            top: calc(100% + 5px);
+            left: 0;
+            border: 2px solid $neutral-dark;
+            border-radius: 5px;
+            background-color: $neutral-light;
+            display: none;
+            box-shadow: 0 4px 8px 0 rgba($neutral-dark, 0.2), 0 6px 20px 0 rgba($neutral-dark, 0.19);
+            
+            .option {
+                display: block;
+                padding: 5px 10px;
+                color: $neutral-dark;
+                text-decoration: none;
+                transition: background-color 100ms linear;
+
+                &:hover {
+                    background-color: $neutral-light-accent-1
+                }
+
+                &:active {
+                    background-color: $neutral-light-accent-2
+                }
+            }
+
+            &.show {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+.employee-birthday {
+    background-color: $neutral-light;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba($neutral-dark, 0.1), 0 6px 20px 0 rgba($neutral-dark, 0.15);
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        padding: 10px;
+        color: $primary;
+        font-size: 18px;
+    }
+
+    .over {
+        color: $error;
+    }
+
+    .coming {
+        color: $success;
+    }
+
+    .empty {
+        padding: 10px;
+        font-weight: 700;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        padding: 0 10px 20px 10px;
+
+        tr:nth-of-type(even) {
+            background-color: $neutral-light-accent-1;
+        }
+
+        td {
+            padding: 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &:nth-of-type(2) {
+                text-align: center;
+            }
+
+            &:last-of-type {
+                text-align: right;
+            }
+        }
+    }
+}

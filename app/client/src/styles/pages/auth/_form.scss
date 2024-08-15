@@ -1,0 +1,78 @@
+form {
+    width: 100%;
+
+    .success-message {
+        margin-bottom: 15px;
+    }
+
+    .error-message {
+        margin-bottom: 15px;
+    }
+
+    .input-container {
+        margin-bottom: 10px;
+    }
+
+    .middle {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 20px 0;
+        font-size: 13px;
+
+        input[type=checkbox] {
+            margin-right: 5px;
+        }
+
+        .checkbox-container div {
+            display: inline-block;
+        }
+
+        a {
+            text-align: right;
+        }
+    }
+
+    button[type=submit] {
+        background-color: $primary;
+        height: 45px;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        padding: 10px 0;
+        border-radius: 10px;
+        color: $neutral-light;
+        cursor: pointer;
+        transition: all 70ms linear;
+
+        &:hover {
+            background-color: $primary-accent-1;
+        }
+
+        &:active {
+            background-color: $primary-accent-2;
+        }
+
+        &.disable {
+            background-color: $neutral-dark;
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        &.success {
+            background-color: $success;
+            color: $neutral-light;
+            font-size: 20px;
+            cursor: not-allowed;
+        }
+    }
+
+    .back {
+        display: inline-block;
+        margin-top: 40px;
+        color: $neutral-dark;
+        
+        span {
+            margin-left: 10px;
+        }
+    }
+}

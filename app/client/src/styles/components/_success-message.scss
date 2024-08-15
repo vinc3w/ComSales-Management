@@ -1,0 +1,12 @@
+.success-message {
+    border: 1px solid $success;
+    border-radius: 7px;
+    background-color: rgba($success, 0.05);
+    color: $success-accent-2;
+    text-align: left;
+    padding: 10px;
+
+    &:empty {
+        display: none;
+    }
+}

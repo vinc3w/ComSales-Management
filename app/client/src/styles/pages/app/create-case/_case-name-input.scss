@@ -1,0 +1,16 @@
+.case-name-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    input {
+        border: 1px solid $neutral-dark;
+        padding: 5px 10px;
+    }
+
+    button {
+        height: 33px;
+        border-radius: 0;
+    }
+}

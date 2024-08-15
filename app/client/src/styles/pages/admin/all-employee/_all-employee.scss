@@ -1,0 +1,127 @@
+#AllEmployee {
+
+    @import './filter';
+
+    .error-message {
+        border: 1px solid $error;
+        border-radius: 7px;
+        background-color: rgba($error, 0.1);
+        color: $error;
+        padding: 10px;
+        margin-top: 20px;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    .loading {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+        
+        .loading-circle {
+            margin: 0 auto;
+
+            svg circle {
+                stroke: $neutral-dark;
+                
+            }
+        }
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+
+            a {
+                padding: 7px 15px;
+                margin-left: 10px;
+
+                svg {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .user-container {
+
+        .user-list {
+            overflow-x: auto;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+
+            .user {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border-top: 1px solid $neutral-light-accent-2;
+                border-bottom: 1px solid $neutral-light-accent-2;
+                background-color: $neutral-light;
+                padding: 10px;
+
+                .profile-image {
+                    
+                    img {
+                        display: block;
+                        width: 30px;
+                    }
+                }
+    
+                .name {
+                    font-size: 13px;
+                    width: 100%;
+                    display: flex;
+                    gap: 5px;
+    
+                    .username {
+                        font-weight: 700;
+                    }
+    
+                    .email {
+                        opacity: 0.7;
+                    }
+                }
+
+                .position {
+                    font-size: 13px;
+                }
+    
+                .edit {
+                    
+                    a {
+                        display: block;
+                        padding: 3px 5px;
+                        border-radius: 3px;
+                        color: $neutral-dark;
+    
+                        &:hover {
+                            background-color: $neutral-light-accent-1;
+                        }
+        
+                        &:active {
+                            background-color: $neutral-light-accent-2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

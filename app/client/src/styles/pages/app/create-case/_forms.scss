@@ -1,0 +1,113 @@
+.form {
+    overflow-x: auto;
+
+    .form-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 40px 0;
+
+        div {
+            display: inline;
+
+            .label {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    & > * {
+        max-width: 930px;
+        min-width: 930px;
+        padding-bottom: 20px;
+    }
+}
+
+.va {
+
+    .title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 20px 0;
+    }
+    
+    table {
+        margin-bottom: 20px;
+        width: 100%;
+
+        .label {
+            width: 250px;
+            font-weight: 700;
+        }
+
+        .colon {
+            width: 30px;
+            padding: 0 20px;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 5px;
+            width: 100%;
+            border: 1px solid $neutral-dark;
+        }
+    }
+
+    .p1 {
+        margin-bottom: 20px;
+    }
+}
+
+.oats, .oatr, .otp, .otr {
+
+    textarea {
+        font-size: 14px;
+    }
+
+    textarea, input {
+        padding: 3px 5px;
+        border: 1px solid $neutral-dark;
+    }
+
+    .spread-out {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dear {
+        margin: 40px 0;
+    }
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .address-input {
+        margin-bottom: 20px;
+
+        textarea {
+            resize: horizontal;
+        }
+    }
+
+    .terms {
+        margin: 40px 0;
+
+        & > * {
+            margin-top: 20px;
+        }
+    }
+
+    .signature {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        & > * {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

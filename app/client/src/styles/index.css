@@ -1,0 +1,1831 @@
+@keyframes blink {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+@font-face {
+  font-family: Poppins;
+  src: local("Poppins"), url("/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: local("Poppins-SemiBold"), url("/fonts/Poppins-SemiBold.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input, textarea, button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-family: Poppins, sans-serif;
+}
+
+a {
+  color: #3366FF;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+b {
+  font-family: PoppinsBold;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+}
+
+#error {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 30px 0;
+}
+#error .content {
+  text-align: center;
+}
+#error .content .title {
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 100px;
+}
+#error .content .error {
+  font-size: 20px;
+}
+#error .content .sub-title {
+  margin-top: 10px;
+}
+#error .content a {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 40px;
+  background-color: #3366FF;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+#loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#loading .loading-circle {
+  height: 30px;
+}
+#loading .loading-circle svg {
+  width: 30px;
+}
+#loading .loading-circle circle {
+  stroke: #2F3645;
+  stroke-width: 5px;
+}
+#loading .text {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.input-container .input {
+  position: relative;
+  border: solid 2px #2F3645;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.input-container .input input {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-container .input .label {
+  position: absolute;
+  left: 10px;
+  background-color: #ffffff;
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-container .input button {
+  font-size: 18px;
+  min-width: 23px;
+  margin-right: 7px;
+  animation: blink 300ms;
+}
+.input-container .input.shift-label {
+  border: 2px solid #3366FF;
+}
+.input-container .input.shift-label .label {
+  transform: translateY(-21px) scale(0.9);
+  padding: 0 0.2em;
+  color: #3366FF;
+}
+.input-container .input.shift-label button {
+  color: #3366FF;
+}
+.input-container .error {
+  color: #FF3A3A;
+  margin-top: 5px;
+}
+
+.loading-circle {
+  height: 20px;
+}
+.loading-circle svg {
+  width: 20px;
+  transform-origin: center;
+  animation: loading-circle-rotate 2s linear infinite;
+}
+.loading-circle svg circle {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: loading-circle-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-circle-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-circle-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+.dropdown-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dropdown-link .dropdown-sub .trigger {
+  background-color: #ffffff;
+  border: 2px solid #2F3645;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  cursor: pointer;
+}
+.dropdown-link .dropdown-sub .options {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  top: calc(100% + 5px);
+  left: 0;
+  border: 2px solid #2F3645;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: none;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.2), 0 6px 20px 0 rgba(47, 54, 69, 0.19);
+}
+.dropdown-link .dropdown-sub .options .option {
+  display: block;
+  padding: 5px 10px;
+  color: #2F3645;
+  text-decoration: none;
+  transition: background-color 100ms linear;
+}
+.dropdown-link .dropdown-sub .options .option:hover {
+  background-color: #f3f3f3;
+}
+.dropdown-link .dropdown-sub .options .option:active {
+  background-color: #e9e9e9;
+}
+.dropdown-link .dropdown-sub .options.show {
+  display: block;
+}
+
+.dropdown .label {
+  margin-bottom: 5px;
+}
+.dropdown .dropdown-sub {
+  position: relative;
+}
+.dropdown .dropdown-sub .trigger {
+  border: 2px solid #2F3645;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  cursor: pointer;
+}
+.dropdown .dropdown-sub .options {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  top: calc(100% + 5px);
+  left: 0;
+  border: 2px solid #2F3645;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: none;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.2), 0 6px 20px 0 rgba(47, 54, 69, 0.19);
+}
+.dropdown .dropdown-sub .options .option {
+  display: block;
+  padding: 5px 10px;
+  transition: background-color 100ms linear;
+}
+.dropdown .dropdown-sub .options .option:hover {
+  background-color: #f3f3f3;
+}
+.dropdown .dropdown-sub .options .option:active {
+  background-color: #e9e9e9;
+}
+.dropdown .dropdown-sub .options.show {
+  display: block;
+}
+
+.error-message {
+  border: 1px solid #FF3A3A;
+  border-radius: 7px;
+  background-color: rgba(255, 58, 58, 0.1);
+  color: #FF3A3A;
+  padding: 10px;
+}
+.error-message:empty {
+  display: none;
+}
+
+.success-message {
+  border: 1px solid #58DB41;
+  border-radius: 7px;
+  background-color: rgba(88, 219, 65, 0.05);
+  color: #53c23f;
+  text-align: left;
+  padding: 10px;
+}
+.success-message:empty {
+  display: none;
+}
+
+.button-primary, .button-success, .button-warning, .button-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+  color: #ffffff;
+  height: 40px;
+  min-width: 90px;
+  padding: 0 20px;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: background-color 100ms linear;
+  cursor: pointer;
+}
+.button-primary.disabled, .button-success.disabled, .button-warning.disabled, .button-error.disabled {
+  background-color: grey !important;
+  opacity: 0.7;
+}
+.button-primary.disabled circle, .button-success.disabled circle, .button-warning.disabled circle, .button-error.disabled circle {
+  stroke: #ffffff !important;
+}
+
+.button-primary {
+  background-color: #3366FF;
+}
+.button-primary:hover {
+  background-color: #3061f5;
+}
+.button-primary:active {
+  background-color: #315fe7;
+}
+
+.button-success {
+  background-color: #58DB41;
+}
+.button-success:hover {
+  background-color: #53d13d;
+}
+.button-success:active {
+  background-color: #53c23f;
+}
+
+.button-warning {
+  background-color: #FFA83F;
+}
+.button-warning:hover {
+  background-color: #f7a43f;
+}
+.button-warning:active {
+  background-color: #ec9d3c;
+}
+
+.button-error {
+  background-color: #FF3A3A;
+}
+.button-error:hover {
+  background-color: #ee3939;
+}
+.button-error:active {
+  background-color: #e23636;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .page-link {
+  background-color: #ffffff;
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid #394255;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .page-link .wrapper, .pagination .page-link a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #2F3645;
+  width: 100%;
+  height: 100%;
+}
+.pagination .page-link .wrapper.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.pagination .page-link a.on {
+  background-color: #e9e9e9;
+}
+.pagination .page-link:not(:first-of-type) {
+  border-left: 0;
+}
+.pagination .page-link:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.pagination .page-link:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.pagination .page-link:hover {
+  background-color: #f3f3f3;
+}
+.pagination .page-link:active {
+  background-color: #e9e9e9;
+}
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+}
+.auth .bg {
+  flex-grow: 1;
+  background: url("/images/auth-bg.jpg") no-repeat center;
+  background-size: cover;
+}
+.auth .form-container {
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 630px;
+  padding: 30px;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+}
+@media (width < 1000px) {
+  .auth .form-container {
+    width: 60vw;
+  }
+}
+@media (width < 750px) {
+  .auth .form-container {
+    width: 100%;
+  }
+}
+.auth .form-container .content {
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth .form-container .content .title {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 700;
+}
+.auth .form-container .content .sub-title {
+  opacity: 0.8;
+  margin: 10px 0 30px 0;
+}
+.auth .form-container .content form {
+  width: 100%;
+}
+.auth .form-container .content form .success-message {
+  margin-bottom: 15px;
+}
+.auth .form-container .content form .error-message {
+  margin-bottom: 15px;
+}
+.auth .form-container .content form .input-container {
+  margin-bottom: 10px;
+}
+.auth .form-container .content form .middle {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 20px 0;
+  font-size: 13px;
+}
+.auth .form-container .content form .middle input[type=checkbox] {
+  margin-right: 5px;
+}
+.auth .form-container .content form .middle .checkbox-container div {
+  display: inline-block;
+}
+.auth .form-container .content form .middle a {
+  text-align: right;
+}
+.auth .form-container .content form button[type=submit] {
+  background-color: #3366FF;
+  height: 45px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 70ms linear;
+}
+.auth .form-container .content form button[type=submit]:hover {
+  background-color: #3061f5;
+}
+.auth .form-container .content form button[type=submit]:active {
+  background-color: #315fe7;
+}
+.auth .form-container .content form button[type=submit].disable {
+  background-color: #2F3645;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.auth .form-container .content form button[type=submit].success {
+  background-color: #58DB41;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: not-allowed;
+}
+.auth .form-container .content form .back {
+  display: inline-block;
+  margin-top: 40px;
+  color: #2F3645;
+}
+.auth .form-container .content form .back span {
+  margin-left: 10px;
+}
+
+#App {
+  display: flex;
+  background-color: #f3f3f3;
+}
+#App .content {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 300px;
+  transition: margin 100ms linear;
+}
+#App .content.move {
+  margin-left: 0;
+}
+@media (width <= 950px) {
+  #App .content {
+    margin-left: 0 !important;
+  }
+}
+#App .content .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+#App .content .top .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#App .content .top .left .show-button {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 5px;
+  transition: background-color 100ms linear;
+  border-radius: 3px;
+  display: none;
+}
+#App .content .top .left .show-button.show {
+  display: block;
+}
+@media (width <= 950px) {
+  #App .content .top .left .show-button {
+    display: block !important;
+  }
+}
+#App .content .top .left .show-button:hover {
+  background-color: #f3f3f3;
+}
+#App .content .top .left .show-button:active {
+  background-color: #f3f3f3;
+}
+#App .content .top .left .breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+#App .content .top .left .breadcrumbs .child-path {
+  display: flex;
+  align-items: center;
+}
+#App .content .top .left .breadcrumbs .child-path .seperator {
+  margin: 0 10px;
+}
+#App .content .top .left .breadcrumbs a {
+  display: block;
+  color: #2F3645;
+}
+#App .content .page {
+  padding: 0 20px 20px 20px;
+  flex-grow: 1;
+  overflow-x: auto;
+  max-width: 100vw;
+}
+#App .sidebar {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 300px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 100;
+  transition: transform 100ms linear;
+  transform: translateX(-100%);
+}
+#App .sidebar .cases {
+  padding: 10px;
+  border-bottom: 1px solid #e9e9e9;
+}
+#App .sidebar .cases .title {
+  opacity: 0.7;
+  padding: 10px 0 5px 10px;
+}
+#App .sidebar .cases .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+#App .sidebar .cases .heading .left svg {
+  margin-right: 10px;
+}
+#App .sidebar .cases a {
+  text-decoration: none;
+}
+#App .sidebar .cases ul {
+  border-left: 1px solid #e9e9e9;
+  margin: 5px 0 5px 6px;
+}
+#App .sidebar .cases ul li {
+  list-style-type: none;
+  padding-left: 6px;
+}
+#App .sidebar .cases ul li a {
+  display: block;
+  padding: 5px 0 5px 10px !important;
+}
+#App .sidebar .cases ul li a svg {
+  width: 20px;
+  margin-right: 10px;
+}
+#App .sidebar .cases ul li a:hover {
+  background-color: #f3f3f3;
+}
+#App .sidebar .cases ul li a:active {
+  background-color: #e9e9e9;
+}
+#App .sidebar .cases .create-new {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 10px;
+}
+#App .sidebar .cases .create-new svg {
+  margin-right: 10px;
+}
+#App .sidebar .cases .heading, #App .sidebar .cases ul li a, #App .sidebar .cases .create-new {
+  margin-right: 10px;
+  transition: background-color 80ms linear;
+  border-radius: 5px;
+}
+#App .sidebar .cases .heading:hover, #App .sidebar .cases ul li a:hover, #App .sidebar .cases .create-new:hover {
+  background-color: #f3f3f3;
+}
+#App .sidebar .cases .heading:active, #App .sidebar .cases ul li a:active, #App .sidebar .cases .create-new:active {
+  background-color: #e9e9e9;
+}
+#App .sidebar.show {
+  transform: translateX(0);
+}
+@media (width <= 950px) {
+  #App .sidebar {
+    transform: translateX(-100%) !important;
+  }
+  #App .sidebar.show {
+    transform: translateX(0) !important;
+    box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.4), 0 6px 20px 0 rgba(47, 54, 69, 0.45);
+  }
+}
+#App .sidebar a {
+  color: #2F3645;
+}
+#App .sidebar .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9e9e9;
+  padding: 20px;
+}
+#App .sidebar .top .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#App .sidebar .top .title img {
+  height: 30px;
+}
+#App .sidebar .top .title div {
+  font-weight: 700;
+  font-size: 18px;
+}
+#App .sidebar .top .hide-button {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 5px;
+  transition: background-color 100ms linear;
+  border-radius: 3px;
+}
+#App .sidebar .top .hide-button:hover {
+  background-color: #f3f3f3;
+}
+#App .sidebar .top .hide-button:active {
+  background-color: #e9e9e9;
+}
+#App .sidebar nav {
+  padding: 10px;
+  border-bottom: 1px solid #e9e9e9;
+}
+#App .sidebar nav ul:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+#App .sidebar nav ul .heading {
+  opacity: 0.7;
+  padding: 10px 10px;
+}
+#App .sidebar nav ul li {
+  list-style-type: none;
+}
+#App .sidebar nav ul li button, #App .sidebar nav ul li a {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 5px 0 5px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 80ms linear;
+  border-radius: 5px;
+}
+#App .sidebar nav ul li button svg, #App .sidebar nav ul li a svg {
+  width: 20px;
+  margin-right: 10px;
+}
+#App .sidebar nav ul li button .count, #App .sidebar nav ul li a .count {
+  margin-left: 10px;
+  background-color: #FF3A3A;
+  padding: 3px 9px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+#App .sidebar nav ul li button .count:empty, #App .sidebar nav ul li a .count:empty {
+  display: none;
+}
+#App .sidebar nav ul li button:hover, #App .sidebar nav ul li a:hover {
+  background-color: #f3f3f3;
+}
+#App .sidebar nav ul li button:active, #App .sidebar nav ul li a:active {
+  background-color: #e9e9e9;
+}
+#App .sidebar nav.bottom {
+  margin-top: auto;
+  border-bottom: 0px solid #e9e9e9;
+}
+#App .sidebar nav.bottom ul {
+  margin-bottom: 0;
+}
+#App #dashboard .error-message {
+  margin-bottom: 20px;
+}
+#App #dashboard .employee {
+  background-color: #ffffff;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.1), 0 6px 20px 0 rgba(47, 54, 69, 0.15);
+}
+#App #dashboard .employee section {
+  display: flex;
+  flex-grow: 1;
+}
+#App #dashboard .employee section svg {
+  margin-right: 20px;
+  font-size: 35px;
+}
+#App #dashboard .employee section .label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+#App #dashboard .commission {
+  background-color: #ffffff;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.1), 0 6px 20px 0 rgba(47, 54, 69, 0.15);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+  flex-wrap: wrap;
+}
+@media (width <= 1300px) {
+  #App #dashboard .commission {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #App #dashboard .commission section:last-of-type {
+    margin-top: 30px;
+  }
+  #App #dashboard .commission .chart > div {
+    margin-top: 20px;
+    width: 500px;
+  }
+}
+#App #dashboard .commission section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#App #dashboard .commission section .title {
+  font-weight: 700;
+  font-size: 17px;
+}
+#App #dashboard .commission section .chart {
+  margin: auto 0;
+}
+@media (width <= 650px) {
+  #App #dashboard .commission section .chart > div {
+    width: 300px;
+  }
+}
+@media (width <= 400px) {
+  #App #dashboard .commission section .chart > div {
+    width: 250px;
+  }
+}
+#App #dashboard .commission .loading-circle circle {
+  stroke: #2F3645;
+}
+#App #dashboard section.case-summary {
+  display: flex;
+  gap: 20px;
+}
+@media (width <= 1400px) {
+  #App #dashboard section.case-summary {
+    flex-wrap: wrap-reverse;
+  }
+}
+#App #dashboard section.case-summary .content-right {
+  width: 100%;
+}
+#App #dashboard section.case-summary .content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+#App #dashboard section.case-summary .sales-container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  transition: transform 100ms linear;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.4), 0 6px 20px 0 rgba(47, 54, 69, 0.45);
+}
+#App #dashboard section.case-summary .sales-container:hover {
+  transform: scale(1.02);
+}
+#App #dashboard section.case-summary .sales-container .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+#App #dashboard section.case-summary .sales-container .heading .left .name {
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+#App #dashboard section.case-summary .sales-container .heading .left .small {
+  font-size: 13px;
+  font-weight: normal;
+  opacity: 0.7;
+}
+#App #dashboard section.case-summary .sales-container .heading .left a {
+  color: #2F3645;
+  opacity: 0.7;
+}
+#App #dashboard section.case-summary .sales-container .heading .right {
+  text-align: right;
+  font-weight: 700;
+}
+#App #dashboard section.case-summary .sales-container .table-container {
+  overflow-x: auto;
+}
+#App #dashboard section.case-summary .sales-container table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#App #dashboard section.case-summary .sales-container table thead td {
+  background-color: #e9e9e9;
+}
+#App #dashboard section.case-summary .sales-container table td {
+  background-color: #f3f3f3;
+  border: 2px solid #2F3645;
+  padding: 5px 10px;
+}
+#App #dashboard section.case-summary .sales-container.completed {
+  background-color: rgba(88, 219, 65, 0.4);
+}
+#App #dashboard section.case-summary .sales-container.approved {
+  background-color: rgba(255, 168, 63, 0.4);
+}
+#App #dashboard section.case-summary .sales-container.pending {
+  background-color: rgba(255, 58, 58, 0.4);
+}
+#App #dashboard section.case-summary .sales-container.total {
+  grid-column: 2/3;
+  background-color: rgba(51, 102, 255, 0.4);
+}
+#App #dashboard .employee-birthday {
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(47, 54, 69, 0.1), 0 6px 20px 0 rgba(47, 54, 69, 0.15);
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#App #dashboard .employee-birthday .title {
+  padding: 10px;
+  color: #3366FF;
+  font-size: 18px;
+}
+#App #dashboard .employee-birthday .over {
+  color: #FF3A3A;
+}
+#App #dashboard .employee-birthday .coming {
+  color: #58DB41;
+}
+#App #dashboard .employee-birthday .empty {
+  padding: 10px;
+  font-weight: 700;
+}
+#App #dashboard .employee-birthday table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  padding: 0 10px 20px 10px;
+}
+#App #dashboard .employee-birthday table tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+#App #dashboard .employee-birthday table td {
+  padding: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#App #dashboard .employee-birthday table td:nth-of-type(2) {
+  text-align: center;
+}
+#App #dashboard .employee-birthday table td:last-of-type {
+  text-align: right;
+}
+#App #AllCases .pagination {
+  margin-top: 20px;
+}
+#App #AllCases .header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#App #AllCases .header .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #AllCases .table-container {
+  overflow-x: auto;
+}
+#App #AllCases .table-container .empty {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#App #AllCases .table-container .empty img {
+  display: block;
+}
+#App #AllCases .table-container .empty .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #AllCases .filter {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+#App #AllCases .filter .show-button {
+  border: 2px solid #2F3645;
+  padding: 10px;
+  cursor: pointer;
+}
+#App #AllCases .filter .filter-content {
+  position: relative;
+  align-items: flex-end;
+  gap: 5px 20px;
+  flex-wrap: wrap;
+  border: 2px solid #2F3645;
+  border-top: 0px solid #2F3645;
+  padding: 20px;
+  display: none;
+}
+#App #AllCases .filter .filter-content.show {
+  display: flex;
+}
+#App #AllCases .filter .filter-content .filter-input .label {
+  margin-bottom: 5px;
+}
+#App #AllCases .filter .filter-content .filter-input input {
+  border: 2px solid #2F3645;
+  background-color: #ffffff;
+  padding: 7px;
+  border-radius: 5px;
+}
+#App #AllCases .table-container .error-message {
+  border: 1px solid #FF3A3A;
+  border-radius: 7px;
+  background-color: rgba(255, 58, 58, 0.1);
+  color: #FF3A3A;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+#App #AllCases .table-container .error-message:empty {
+  display: none;
+}
+#App #AllCases .table-container table.case-list {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+  font-size: 13px;
+}
+#App #AllCases .table-container table.case-list td {
+  border: 2px solid #2F3645;
+  padding: 5px 10px;
+}
+#App #AllCases .table-container table.case-list td a {
+  color: #2F3645;
+}
+#App #AllCases .table-container table.case-list thead td {
+  background-color: #f3f3f3;
+}
+#App #AllCases .table-container table.case-list thead td button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+#App #AllCases .table-container .loading {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+#App #AllCases .table-container .loading .loading-circle {
+  margin: 0 auto;
+}
+#App #AllCases .table-container .loading .loading-circle svg circle {
+  stroke: #2F3645;
+}
+#App #CreateCase {
+  background-color: #ffffff;
+  padding: 20px;
+}
+#App #CreateCase .form {
+  overflow-x: auto;
+}
+#App #CreateCase .form .form-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0;
+}
+#App #CreateCase .form .form-top div {
+  display: inline;
+}
+#App #CreateCase .form .form-top div .label {
+  margin-right: 10px;
+}
+#App #CreateCase .form > * {
+  max-width: 930px;
+  min-width: 930px;
+  padding-bottom: 20px;
+}
+#App #CreateCase .va .title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+#App #CreateCase .va table {
+  margin-bottom: 20px;
+  width: 100%;
+}
+#App #CreateCase .va table .label {
+  width: 250px;
+  font-weight: 700;
+}
+#App #CreateCase .va table .colon {
+  width: 30px;
+  padding: 0 20px;
+}
+#App #CreateCase .va table input {
+  margin: 5px 0;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #2F3645;
+}
+#App #CreateCase .va .p1 {
+  margin-bottom: 20px;
+}
+#App #CreateCase .oats textarea, #App #CreateCase .oatr textarea, #App #CreateCase .otp textarea, #App #CreateCase .otr textarea {
+  font-size: 14px;
+}
+#App #CreateCase .oats textarea, #App #CreateCase .oats input, #App #CreateCase .oatr textarea, #App #CreateCase .oatr input, #App #CreateCase .otp textarea, #App #CreateCase .otp input, #App #CreateCase .otr textarea, #App #CreateCase .otr input {
+  padding: 3px 5px;
+  border: 1px solid #2F3645;
+}
+#App #CreateCase .oats .spread-out, #App #CreateCase .oatr .spread-out, #App #CreateCase .otp .spread-out, #App #CreateCase .otr .spread-out {
+  display: flex;
+  justify-content: space-between;
+}
+#App #CreateCase .oats .dear, #App #CreateCase .oatr .dear, #App #CreateCase .otp .dear, #App #CreateCase .otr .dear {
+  margin: 40px 0;
+}
+#App #CreateCase .oats .title, #App #CreateCase .oatr .title, #App #CreateCase .otp .title, #App #CreateCase .otr .title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+#App #CreateCase .oats .address-input, #App #CreateCase .oatr .address-input, #App #CreateCase .otp .address-input, #App #CreateCase .otr .address-input {
+  margin-bottom: 20px;
+}
+#App #CreateCase .oats .address-input textarea, #App #CreateCase .oatr .address-input textarea, #App #CreateCase .otp .address-input textarea, #App #CreateCase .otr .address-input textarea {
+  resize: horizontal;
+}
+#App #CreateCase .oats .terms, #App #CreateCase .oatr .terms, #App #CreateCase .otp .terms, #App #CreateCase .otr .terms {
+  margin: 40px 0;
+}
+#App #CreateCase .oats .terms > *, #App #CreateCase .oatr .terms > *, #App #CreateCase .otp .terms > *, #App #CreateCase .otr .terms > * {
+  margin-top: 20px;
+}
+#App #CreateCase .oats .signature, #App #CreateCase .oatr .signature, #App #CreateCase .otp .signature, #App #CreateCase .otr .signature {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+#App #CreateCase .oats .signature > *, #App #CreateCase .oatr .signature > *, #App #CreateCase .otp .signature > *, #App #CreateCase .otr .signature > * {
+  display: flex;
+  flex-direction: column;
+}
+#App #CreateCase .case-no-input {
+  display: flex;
+  align-items: center;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown {
+  position: relative;
+  width: 200px;
+  margin-left: 10px;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .label {
+  width: 100%;
+  border: 1px solid #2F3645;
+  cursor: pointer;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .label .selection {
+  padding: 5px 5px;
+  font-size: 13px;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  border: 1px solid #2F3645;
+  display: none;
+  background-color: #ffffff;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list.show {
+  display: block;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list button {
+  text-align: left;
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list button:hover {
+  background-color: #f3f3f3;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list button:active {
+  background-color: #e9e9e9;
+}
+#App #CreateCase .case-no-input .case-no-input-dropdown .option-list button:first-of-type {
+  background-color: #e9e9e9;
+  border-bottom: 1px solid #2F3645;
+}
+#App #CreateCase .case-name-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+#App #CreateCase .case-name-input input {
+  border: 1px solid #2F3645;
+  padding: 5px 10px;
+}
+#App #CreateCase .case-name-input button {
+  height: 33px;
+  border-radius: 0;
+}
+#App #CreateCase .summary .header {
+  display: flex;
+  align-items: center;
+  color: #3366FF;
+  background-color: rgba(233, 233, 233, 0.5);
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+#App #CreateCase .summary .header svg {
+  margin-right: 20px;
+  font-size: 25px;
+}
+#App #CreateCase .summary .short-info, #App #CreateCase .summary .people {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+#App #CreateCase .summary .short-info > *, #App #CreateCase .summary .people > * {
+  flex-grow: 1;
+  padding: 0 20px 20px 20px;
+  border-radius: 20px;
+}
+#App #CreateCase .summary .short-info > * .title, #App #CreateCase .summary .people > * .title {
+  padding: 10px 30px;
+  border-radius: 100px;
+  margin: 20px 0;
+  color: #ffffff;
+  display: inline-block;
+}
+#App #CreateCase .summary .short-info > * table:not(:last-of-type), #App #CreateCase .summary .people > * table:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+#App #CreateCase .summary .short-info > * td:first-of-type, #App #CreateCase .summary .people > * td:first-of-type {
+  padding-right: 20px;
+}
+#App #CreateCase .summary .short-info > * .label, #App #CreateCase .summary .people > * .label {
+  font-size: 13px;
+}
+#App #CreateCase .summary .short-info > * .value, #App #CreateCase .summary .people > * .value {
+  font-family: "PoppinsBold";
+}
+#App #CreateCase .summary .short-info > * .value.status, #App #CreateCase .summary .people > * .value.status {
+  background-color: #FF3A3A;
+  padding: 5px 10px;
+  margin-left: -10px;
+  border-radius: 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #ffffff;
+}
+#App #CreateCase .summary .short-info > * .value.pending, #App #CreateCase .summary .people > * .value.pending {
+  background-color: #FF3A3A;
+}
+#App #CreateCase .summary .short-info > * .value.approved, #App #CreateCase .summary .people > * .value.approved {
+  background-color: #FFA83F;
+}
+#App #CreateCase .summary .short-info > * .value.completed, #App #CreateCase .summary .people > * .value.completed {
+  background-color: #58DB41;
+}
+#App #CreateCase .summary .short-info .seller, #App #CreateCase .summary .people .seller {
+  background-color: rgba(51, 102, 255, 0.3);
+}
+#App #CreateCase .summary .short-info .seller .title, #App #CreateCase .summary .people .seller .title {
+  background-color: #3366FF;
+}
+#App #CreateCase .summary .short-info .buyer, #App #CreateCase .summary .people .buyer {
+  background-color: rgba(230, 131, 105, 0.5);
+}
+#App #CreateCase .summary .short-info .buyer .title, #App #CreateCase .summary .people .buyer .title {
+  background-color: #E68369;
+}
+#App #CreateCase .summary .payment {
+  margin-top: 20px;
+}
+#App #CreateCase .summary .payment .text {
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+#App #CreateCase .summary .calculation {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+#App #CreateCase .summary .calculation .blue {
+  color: #3366FF;
+}
+#App #CreateCase .summary .calculation .red {
+  color: #FF3A3A;
+}
+#App #CreateCase .summary .calculation .table-container {
+  flex-grow: 1;
+}
+#App #CreateCase .summary .calculation .table-container table {
+  text-align: right;
+}
+#App #CreateCase .summary .calculation .table-container table tr {
+  height: 15px;
+}
+#App #CreateCase .summary .calculation td:first-of-type {
+  font-weight: 700;
+  padding-right: 40px;
+}
+#App #CreateCase .summary .calculation td.percentage {
+  padding: 0 40px 0 20px;
+  opacity: 0.7;
+}
+#App #CreateCase .summary .calculation .subtotal {
+  padding: 0 !important;
+}
+#App #CreateCase .summary .calculation .subtotal div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #e9e9e9;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+#App #CreateCase .summary .total {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 20px;
+}
+#App #CreateCase .success-message, #App #CreateCase .error-message {
+  margin-bottom: 20px;
+}
+#App #CreateCase .loading-circle {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+#App #CreateCase .loading-circle svg circle {
+  stroke: #2F3645;
+}
+#App #CreateCase .create-case-top-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9e9e9;
+}
+#App #CreateCase .create-case-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #e9e9e9;
+}
+#App #CreateCase .empty {
+  margin-top: 20px;
+}
+#App #CreateCase .admin-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#App #CreateCase button[type=submit], #App #CreateCase button.delete, #App #CreateCase button.delete-case {
+  margin-top: 20px;
+}
+#App #CreateCase .buttons {
+  display: flex;
+  gap: 10px;
+}
+#App #CreateCase form.delete-case {
+  margin-top: 20px;
+  border-top: 1px solid #e9e9e9;
+}
+#App #profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#App #profile .loading-circle {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+#App #profile .loading-circle circle {
+  stroke: #2F3645;
+}
+#App #profile .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #profile .title svg {
+  margin-right: 5px;
+}
+#App #profile .profile, #App #profile .name-card {
+  margin: 10px 0 20px 0;
+}
+#App #profile .name {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #profile .name-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 7px;
+}
+#App #profile .name-card .top {
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#App #profile .name-card .top .profile-image img {
+  height: 100px;
+}
+#App #profile .name-card .top .right {
+  text-align: right;
+}
+#App #profile .name-card .bottom {
+  border-left: 30px solid #ae98b6;
+  padding: 10px 10px 10px 20px;
+  margin-bottom: 30px;
+}
+#App #profile .name-card .bottom td:first-of-type {
+  font-weight: 700;
+}
+#App #profile .name-card .bottom td:nth-of-type(2) {
+  padding: 2px 10px;
+}
+#App #profile .profile {
+  padding: 30px;
+  border-radius: 7px;
+}
+#App #profile .profile.male {
+  color: #ffffff;
+  background-color: #3366FF;
+}
+#App #profile .profile.female {
+  background-color: #E68369;
+}
+#App #profile .profile .profile-top {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2F3645;
+  margin-bottom: 20px;
+  width: 100%;
+}
+#App #profile .profile .bottom > * {
+  display: flex;
+  gap: 10px;
+  margin: 3px 0;
+}
+#App #Notification {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#App #Notification .pagination {
+  margin-top: 20px;
+}
+#App #Notification .no-notifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+#App #Notification .no-notifications img {
+  display: block;
+  margin-bottom: 20px;
+}
+#App #Notification .no-notifications .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #Notification .error-message {
+  margin-bottom: 20px;
+}
+#App #Notification header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#App #Notification header .title {
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#App #Notification header .title span {
+  background-color: #FF3A3A;
+  padding: 3px 9px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+#App #Notification header .title span:empty {
+  display: none;
+}
+#App #Notification header .pagination {
+  margin-top: 0;
+}
+#App #Notification .notification-list .notification {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+}
+#App #Notification .notification-list .notification:nth-of-type(even) {
+  background-color: #e9e9e9;
+}
+#App #Notification .notification-list .notification .profile-image img {
+  height: 60px;
+}
+#App #Notification .notification-list .notification .message {
+  min-height: 60px;
+  width: 100%;
+  padding: 0 10px;
+}
+#App #Notification .notification-list .notification .message .time {
+  font-size: 13px;
+  opacity: 0.7;
+}
+#App #Notification .notification-list .notification .delete {
+  font-size: 17px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 100ms linear;
+}
+#App #Notification .notification-list .notification .delete:hover {
+  background-color: #f3f3f3;
+}
+#App #Notification .notification-list .notification .delete:active {
+  background-color: #e9e9e9;
+}
+#App #Notification .notification-list .notification .delete svg {
+  width: 15px;
+}
+#App #Notification .notification-list .notification .delete svg circle {
+  stroke: #2F3645;
+  stroke-width: 6;
+}
+#App #Help {
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#App #Help .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+#App #Help .sub-title {
+  font-weight: 700;
+  margin-top: 20px;
+}
+#App #Help .socials {
+  min-width: 300px;
+}
+#App #Help .socials a {
+  color: #2F3645;
+}
+#App #Help .socials td:first-of-type {
+  width: 25px;
+  font-size: 20px;
+}
+#App #Help .right {
+  display: flex;
+  height: 300px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+#App #Help .right img {
+  height: 300px;
+}
+#App #AllEmployee .filter {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+#App #AllEmployee .filter .show-button {
+  border: 2px solid #2F3645;
+  padding: 10px;
+  cursor: pointer;
+}
+#App #AllEmployee .filter .filter-content {
+  position: relative;
+  align-items: flex-end;
+  gap: 5px 20px;
+  flex-wrap: wrap;
+  border: 2px solid #2F3645;
+  border-top: 0px solid #2F3645;
+  padding: 20px;
+  display: none;
+}
+#App #AllEmployee .filter .filter-content.show {
+  display: flex;
+}
+#App #AllEmployee .filter .filter-content .filter-input .label {
+  margin-bottom: 5px;
+}
+#App #AllEmployee .filter .filter-content .filter-input input {
+  border: 2px solid #2F3645;
+  background-color: #ffffff;
+  padding: 7px;
+  border-radius: 5px;
+}
+#App #AllEmployee .error-message {
+  border: 1px solid #FF3A3A;
+  border-radius: 7px;
+  background-color: rgba(255, 58, 58, 0.1);
+  color: #FF3A3A;
+  padding: 10px;
+  margin-top: 20px;
+}
+#App #AllEmployee .error-message:empty {
+  display: none;
+}
+#App #AllEmployee .loading {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+#App #AllEmployee .loading .loading-circle {
+  margin: 0 auto;
+}
+#App #AllEmployee .loading .loading-circle svg circle {
+  stroke: #2F3645;
+}
+#App #AllEmployee .pagination {
+  margin-top: 20px;
+}
+#App #AllEmployee header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#App #AllEmployee header .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+#App #AllEmployee header .right {
+  display: flex;
+  align-items: center;
+}
+#App #AllEmployee header .right a {
+  padding: 7px 15px;
+  margin-left: 10px;
+}
+#App #AllEmployee header .right a svg {
+  margin-right: 5px;
+}
+#App #AllEmployee .user-container .user-list {
+  overflow-x: auto;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+#App #AllEmployee .user-container .user-list .user {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+  background-color: #ffffff;
+  padding: 10px;
+}
+#App #AllEmployee .user-container .user-list .user .profile-image img {
+  display: block;
+  width: 30px;
+}
+#App #AllEmployee .user-container .user-list .user .name {
+  font-size: 13px;
+  width: 100%;
+  display: flex;
+  gap: 5px;
+}
+#App #AllEmployee .user-container .user-list .user .name .username {
+  font-weight: 700;
+}
+#App #AllEmployee .user-container .user-list .user .name .email {
+  opacity: 0.7;
+}
+#App #AllEmployee .user-container .user-list .user .position {
+  font-size: 13px;
+}
+#App #AllEmployee .user-container .user-list .user .edit a {
+  display: block;
+  padding: 3px 5px;
+  border-radius: 3px;
+  color: #2F3645;
+}
+#App #AllEmployee .user-container .user-list .user .edit a:hover {
+  background-color: #f3f3f3;
+}
+#App #AllEmployee .user-container .user-list .user .edit a:active {
+  background-color: #e9e9e9;
+}
+#App #Employee {
+  background-color: #ffffff;
+  padding: 20px;
+}
+#App #Employee .success-message, #App #Employee .error-message {
+  margin-bottom: 20px;
+}
+#App #Employee .loading {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+#App #Employee .loading .loading-circle {
+  margin: 0 auto;
+}
+#App #Employee .loading .loading-circle svg circle {
+  stroke: #2F3645;
+}
+#App #Employee form .title {
+  font-weight: 700;
+  font-size: 20px;
+}
+#App #Employee form table.profile-image img {
+  height: 80px;
+  width: 80px;
+  display: block;
+}
+#App #Employee form table {
+  width: 100%;
+  margin: 20px 0;
+}
+#App #Employee form table:nth-last-of-type(odd) {
+  table-layout: fixed;
+}
+#App #Employee form table {
+  border-collapse: collapse;
+  border: 2px solid #2F3645;
+}
+#App #Employee form tr, #App #Employee form td {
+  border: 1px solid #2F3645;
+}
+#App #Employee form td {
+  padding: 5px 10px;
+}
+#App #Employee form td input {
+  width: 100%;
+}
+#App #Employee form td.heading {
+  font-weight: 700;
+}
+#App #Employee form td.radio > div {
+  display: flex;
+  justify-content: space-evenly;
+}
+#App #Employee form td.radio > div > div {
+  display: flex;
+}
+#App #Employee form td.radio > div > div > div {
+  text-wrap: nowrap;
+}
+#App #Employee form td.radio > div > div input {
+  margin-left: 5px;
+}
+#App #Employee form td.cell-button {
+  padding: 0;
+  text-align: center;
+}
+#App #Employee form td.cell-button button {
+  padding: 10px 5px;
+  height: 100%;
+  width: 100%;
+  background-color: #e9e9e9;
+  cursor: pointer;
+  transition: background-color 100ms linear;
+  color: #2F3645;
+}
+#App #Employee form td.cell-button button:hover {
+  background-color: #f3f3f3;
+}
+#App #Employee form td.cell-button button:active {
+  background-color: #ffffff;
+}
+#App #Employee form .position {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+#App #Employee form .position .value {
+  opacity: 0.7;
+}
+#App #Employee form .buttons {
+  display: flex;
+  gap: 10px;
+}/*# sourceMappingURL=index.css.map */

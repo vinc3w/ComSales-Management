@@ -1,0 +1,56 @@
+.case-no-input {
+    display: flex;
+    align-items: center;
+    
+    .case-no-input-dropdown {
+        position: relative;
+        width: 200px;
+        margin-left: 10px;
+    
+        .label {
+            width: 100%;
+            border: 1px solid $neutral-dark;
+            cursor: pointer;
+    
+            .selection {
+                padding: 5px 5px;
+                font-size: 13px;
+            }
+        }
+    
+        .option-list {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            border: 1px solid $neutral-dark;
+            display: none;
+            background-color: $neutral-light;
+    
+            &.show {
+                display: block;
+            }
+    
+            button {
+                text-align: left;
+                width: 100%;
+                padding: 5px;
+                cursor: pointer;
+            
+                &:hover {
+                    background-color: $neutral-light-accent-1;
+                }
+                
+                &:active {
+                    background-color: $neutral-light-accent-2;
+                }
+
+                &:first-of-type {
+                    background-color: $neutral-light-accent-2;
+                    border-bottom: 1px solid $neutral-dark;
+                }
+            }
+        }
+    }    
+}

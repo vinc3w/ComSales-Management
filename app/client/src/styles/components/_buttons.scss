@@ -1,0 +1,75 @@
+.button-primary, .button-success, .button-warning, .button-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none !important;
+    color: $neutral-light;
+    height: 40px;
+    min-width: 90px;
+    padding: 0 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 100ms linear;
+    cursor: pointer;
+
+    &.disabled {
+        background-color: $neutral-grey !important;
+        opacity: 0.7;
+
+        circle {
+            stroke: $neutral-light !important;
+        }
+    }
+}
+
+.button-primary {
+    background-color: $primary;
+
+    &:hover {
+        background-color: $primary-accent-1;
+    }
+
+    &:active {
+        background-color: $primary-accent-2;
+    }
+
+}
+
+.button-success {
+    background-color: $success;
+
+    &:hover {
+        background-color: $success-accent-1;
+    }
+
+    &:active {
+        background-color: $success-accent-2;
+    }
+
+}
+
+.button-warning {
+    background-color: $warning;
+
+    &:hover {
+        background-color: $warning-accent-1;
+    }
+
+    &:active {
+        background-color: $warning-accent-2;
+    }
+
+}
+
+.button-error {
+    background-color: $error;
+
+    &:hover {
+        background-color: $error-accent-1;
+    }
+
+    &:active {
+        background-color: $error-accent-2;
+    }
+
+}

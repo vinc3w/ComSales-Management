@@ -1,0 +1,39 @@
+.filter {
+    background-color: $neutral-light;
+    margin-bottom: 20px;
+    
+    .show-button {
+        border: 2px solid $neutral-dark;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .filter-content {
+        position: relative;
+        align-items: flex-end;
+        gap: 5px 20px;
+        flex-wrap: wrap;
+        border: 2px solid $neutral-dark;
+        border-top: 0px solid $neutral-dark;
+        padding: 20px;
+        display: none;
+
+        &.show {
+            display: flex;
+        }
+
+        .filter-input {
+
+            .label {
+                margin-bottom: 5px;
+            }
+
+            input {
+                border: 2px solid $neutral-dark;
+                background-color: $neutral-light;
+                padding: 7px;
+                border-radius: 5px;
+            }
+        }
+    }
+}

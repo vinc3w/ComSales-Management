@@ -1,0 +1,61 @@
+@import './abstract/animations';
+@import './abstract/colors';
+
+@font-face {
+    font-family: Poppins;
+    src: local('Poppins'),
+         url('/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: PoppinsBold;
+    src: local('Poppins-SemiBold'),
+         url('/fonts/Poppins-SemiBold.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input, textarea, button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-family: Poppins, sans-serif;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+b {
+    font-family: PoppinsBold;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+}
+
+@import './pages/misc/error';
+@import './pages/misc/loading';
+
+@import './components/input';
+@import './components/loading-circle';
+@import './components/dropdown-link';
+@import './components/dropdown';
+@import './components/error-message';
+@import './components/success-message';
+@import './components/buttons';
+@import './components/pagination';
+
+@import './pages/auth/auth';
+
+@import './components/app-layout/app-layout';

@@ -1,0 +1,9 @@
+{
+    "SERVER_URL": "http://localhost:3000",
+    "COMPANY_NAME": "ITPJ PROPERTIES SDN BHD",
+    "COMPANY_ABBR": "IPSB",
+    "COMPANY_ADDRESS": "Sunway College, 2, Jalan Universiti, Bandar Sunway, 47500 Petaling Jaya, Selangor",
+    "COMPANY_EMAIL": "vinc3w59@gmail.com",
+    "LIMIT_COUNT": 20,
+    "SST_PERCENTAGE": 8
+}
